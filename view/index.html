@@ -1,0 +1,11 @@
+Welcome to Tastes
+<div class="tastingEntries">
+	{{~it.entries:entry:index}}
+		<div class="tastingEntry">
+			<span>{{=entry.TYPE}}</span>
+			<span>{{=entry.NAME}}</span>
+			<span>{{=entry.RATING}}</span>
+		</div>
+	{{~}}
+</div>
+<button onclick="redirect('addEntry.html')">Add New Entry</button>
