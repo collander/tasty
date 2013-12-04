@@ -4,7 +4,6 @@
 	
 	//Fields
 	var file = "tasting.db";
-	var db = new sqlite3.Database(file);
 	
 	//Init
 	
