@@ -16,7 +16,7 @@
 	};
 	
 	exports.submitEntry = function(params){
-		var sql = 'INSERT INTO TASTES (TYPE, NAME, RATING) VALUES (?,?,?)';
+		var sql = 'INSERT INTO TASTES (TYPE, NAME, RATING) VALUES (?,?,?);';
 		console.log(sql);
 		adapter.connect(process.env.DATABASE_URL, function(err, client){
 			var query = client.query(sql, [params.type, params.name, params.rating]);
@@ -25,8 +25,9 @@
 	};
 	
 	exports.getEntries = function(callback){
-		var sql = 'SELECT ROWID, * FROM TASTES';
+		var sql = 'SELECT ROWID, * FROM TASTES;';
 		console.log(sql);
+		console.log(process.env.DATABASE_URL);
 		adapter.connect(process.env.DATABASE_URL, function(err, client){
 			client.query(sql, callback);
 			client.end();
