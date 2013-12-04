@@ -25,7 +25,7 @@
 	};
 	
 	exports.getEntries = function(callback){
-		var sql = 'SELECT ROWID, * FROM TASTES;';
+		var sql = 'SELECT * FROM TASTES;';
 		console.log(sql);
 		console.log(process.env.HEROKU_POSTGRESQL_COPPER_URL);
 		adapter.connect(process.env.HEROKU_POSTGRESQL_COPPER_URL, function(err, client){
