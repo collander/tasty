@@ -8,4 +8,4 @@ var server = http.createServer(function (req, res){
 
 });
 console.log("listening to port 8080");
-server.listen(8080);
+server.listen(process.env.PORT || 8080);
