@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
   },
-  "repository": "",
+  "repository": "http://github.com/collander/tasty.git",
   "keywords": [
     "Node.js",
     "Eclipse",
@@ -16,9 +16,9 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "sqlite3": "~2.1.19",
-	"express": "~3.4.6",
-	"dot": ">= 0.2.6",
-	"express-dot" : "0.1.0"
+    "express": "~3.4.6",
+    "dot": ">= 0.2.6",
+    "express-dot": "0.1.0",
+    "pg": "~2.8.3"
   }
 }
