@@ -1,11 +1,10 @@
+
+var __dirname = './';
+
 var http = require('http');
 
-console.log("creating Server");
 var server = http.createServer(function (req, res){
 	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.end("Hello World\n");
-	console.log("server created");
-
+	res.send("Hello World\n");
 });
-console.log("listening to port 8080");
-server.listen(process.env.PORT || 8080);
+server.listen(process.env.PORT || 8000);
