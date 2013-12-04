@@ -31,6 +31,7 @@
 		adapter.connect(process.env.HEROKU_POSTGRESQL_COPPER_URL, function(err, client){
 			console.log('connected');
 			client.query(sql, callback);
+			console.log('queried');
 			client.end();
 			});
 	};

@@ -23,6 +23,7 @@ app.use('/public', express.static(__dirname+'/public'));
 app.get('/', function(req, res){
 	var entries = tastyDao.getEntries(
 			function(err, entries){
+				console.log('rendering');
 				res.render('index.html', {entries: entries});
 			});
 });
