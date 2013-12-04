@@ -2,7 +2,7 @@
   "name": "TastingNode",
   "version": "0.1.0",
   "description": "TastingNode",
-  "main": "hello-world-server.js",
+  "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
   },
