@@ -1,0 +1,3 @@
+{
+	"pgurl": "process.env.HEROKU_POSTGRESQL_COPPER_URL"
+}

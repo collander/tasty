@@ -4,7 +4,10 @@
 	
 	//Fields
 	var file = "tasting.db";
-	
+	var config;
+	fs.readFile('./config', function(err, data){
+		config = JSON.parse(data);
+	});
 	//Init
 	
 	reportError = function (err){
@@ -18,21 +21,36 @@
 	exports.submitEntry = function(params){
 		var sql = 'INSERT INTO TASTES (TYPE, NAME, RATING) VALUES (?,?,?);';
 		console.log(sql);
-		adapter.connect(process.env.DATABASE_URL, function(err, client){
-			var query = client.query(sql, [params.type, params.name, params.rating]);
-			client.end();
+		adapter.connect(config.pgurl, function(err, client){
+			if (err){
+				console.log(err);
+			}
+			var query = client.query(sql, [params.type, params.name, params.rating], function(err){
+				if (err){
+					console.log(err);
+				}
+				client.end();
+			});
+			
+			
 		});
 	};
 	
 	exports.getEntries = function(callback){
 		var sql = 'SELECT * FROM TASTES;';
 		console.log(sql);
-		console.log(process.env.HEROKU_POSTGRESQL_COPPER_URL);
-		adapter.connect(process.env.HEROKU_POSTGRESQL_COPPER_URL, function(err, client){
+		adapter.connect(config.pgurl, function(err, client){
+			if (err){
+				console.log(err);
+			}
 			console.log('connected');
-			console.log(sql);
-			client.query(sql, callback);
-			console.log('queried');
-			client.end();
+			client.query(sql, function(err, data){
+				if (err){
+					console.log(err);
+				}
+				client.end();
+				callback(data.rows);
 			});
+			console.log('queried');
+		});
 	};

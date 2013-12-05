@@ -5,6 +5,10 @@ var doT = require('express-dot');
 
 var tastyDao = require('./tastyDao.js');
 
+var config;
+fs.readFile('./config', function(err, data){
+	config = JSON.parse(data);
+	});
 var __dirname = './';
 var app = express();
 
@@ -22,7 +26,7 @@ app.use('/public', express.static(__dirname+'/public'));
 //get handlers
 app.get('/', function(req, res){
 	var entries = tastyDao.getEntries(
-			function(err, entries){
+			function(entries){
 				console.log('rendering');
 				res.render('index.html', {entries: entries});
 			});
